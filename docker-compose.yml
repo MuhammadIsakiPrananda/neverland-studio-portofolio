@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    # Nama image yang akan dibuat. Anda bisa menggantinya sesuai keinginan.
+    image: neverland-studio-web
+    # Konfigurasi untuk proses build image Docker.
+    build:
+      # Gunakan Dockerfile di direktori saat ini.
+      context: .
+      args:
+        # Meneruskan environment variable dari file .env ke dalam proses build Docker.
+        # Ini penting agar Vite bisa mengakses VITE_RECAPTCHA_SITE_KEY saat `npm run build`.
+        - VITE_RECAPTCHA_SITE_KEY=${VITE_RECAPTCHA_SITE_KEY}
+    # Merestart container secara otomatis jika terjadi error atau server reboot.
+    restart: always
+    ports:
+      # Memetakan port 8080 di server Anda ke port 80 di dalam container.
+      # Anda bisa mengaksesnya melalui http://<IP_SERVER>:8080
+      - "8080:80"
+    env_file:
+      # Menggunakan file .env di direktori saat ini untuk environment variables.
+      - .env
