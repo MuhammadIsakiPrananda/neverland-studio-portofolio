@@ -5,8 +5,6 @@ import FaqPage from './FaqPage';
 import PrivacyPolicyPage from './PrivacyPolicyPage';
 import CareerJourney from './CareerJourney';
 import TermsOfServicePage from './TermsOfServicePage';
-
-// Enhanced Particle Background dengan efek glassmorphism
 const ParticleBackground = () => {
   const canvasRef = useRef(null);
   
@@ -902,6 +900,20 @@ const teamMembers = [
       instagram: 'https://www.instagram.com/tuanmudazaky_/'
     }
   },
+  {
+    name: 'Desti Sulistyowati',
+    role: 'UI/UX Architect & Frontend Specialist',
+    division: 'Wakil Ketua Tim',
+    class: 'TKJ 2',
+    image: '/Desti Sulistyowati.jpeg',
+    bio: 'Menciptakan antarmuka yang intuitif dan memukau dengan keahlian mendalam pada desain sistem dan pengalaman pengguna.',
+    skills: ['Figma', 'UI/UX', 'React', 'Design System', 'Prototyping'],
+    social: {
+      github: 'https://github.com/destisulistyowati',
+      linkedin: 'https://www.linkedin.com/in/destisulistyowati/',
+      instagram: 'https://www.instagram.com/destisulistyowati/'
+    }
+  },
 ];
 
 const skills = [
@@ -1135,8 +1147,8 @@ const MainPage = () => {
     );
   }, [filteredProjects.length]);
 
-  const primaryNavItems = ['home', 'about', 'projects', 'contact'];
-  const moreNavItems = ['career', 'team', 'skills'];
+  const primaryNavItems = ['home', 'about', 'skills', 'projects', 'contact'];
+  const moreNavItems = ['team', 'career']; // Mengubah urutan agar team lebih dulu dari career
 
   const t = translations[language];
 
@@ -1341,7 +1353,7 @@ const MainPage = () => {
                 }}
                 className="container mx-auto py-4 flex flex-col space-y-1 px-4"
               >
-                {['home', 'about', 'career', 'projects', 'team', 'skills', 'contact'].map((item) => (
+                {['home', 'about', 'career', 'skills', 'projects', 'team', 'contact'].map((item) => ( // Urutan ini sudah logis, kita pertahankan
                   <motion.button
                     key={item}
                     variants={{ hidden: { opacity: 0, y: -15 }, visible: { opacity: 1, y: 0 } }}
@@ -1490,23 +1502,7 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-
-        {/* Scroll Down Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-8 h-14 border-2 border-gray-400/50 rounded-full flex justify-center items-start p-2"
-          >
-            <motion.div 
-              className="w-1.5 h-3 bg-gray-400/80 rounded-full"
-              animate={{ y: [0, 24, 0], opacity: [1, 0, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            />
-          </motion.div>
-        </div>
       </section>
-
       {/* Enhanced Stats Section */}
       <section className="py-20 relative">
         <div className="container mx-auto px-6 max-w-5xl">
@@ -1611,8 +1607,31 @@ const MainPage = () => {
         </div>
       </section>
 
-      {/* Career Journey Section */}
-      <CareerJourney t={t} />
+      {/* Enhanced Skills Section */}
+      <section id="skills" className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            {t.skillsTitle}
+          </h2>
+          
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.15 } }
+            }}
+          >
+            {skills.map((skill, index) => (
+              <SkillCard key={index} skill={skill} />
+            ))}
+          </motion.div>
+          <p className="text-center text-gray-400 mt-16 max-w-2xl mx-auto">
+            Keahlian kami mencakup spektrum teknologi modern yang luas, dari pengembangan frontend hingga rekayasa AI yang kompleks. Arahkan kursor untuk interaksi.
+          </p>
+        </div>
+      </section>
 
       {/* Enhanced Projects Section */}
       <section id="projects" className="py-20 relative">
@@ -1702,50 +1721,26 @@ const MainPage = () => {
         </div>
       </section>
 
-      {/* Enhanced Team Section */}
+      {/* Enhanced Team Section (Moved after Projects) */}
       <section id="team" className="py-20 relative">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             {t.teamTitle}
           </h2>
           <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Meet the talented professionals behind our success story
+            Temui para profesional berbakat di balik kisah sukses kami.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {teamMembers.map((member) => (
               <TeamMemberCard key={member.name} member={member} t={t} />
             ))}
           </div>
         </div>
       </section>
-
-      {/* Enhanced Skills Section */}
-      <section id="skills" className="py-20 relative">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-16 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            {t.skillsTitle}
-          </h2>
-          
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.15 } }
-            }}
-          >
-            {skills.map((skill, index) => (
-              <SkillCard key={index} skill={skill} />
-            ))}
-          </motion.div>
-          <p className="text-center text-gray-400 mt-16 max-w-2xl mx-auto">
-            Keahlian kami mencakup spektrum teknologi modern yang luas, dari pengembangan frontend hingga rekayasa AI yang kompleks. Arahkan kursor untuk interaksi.
-          </p>
-        </div>
-      </section>
-
+      
+      {/* Career Journey Section (Moved after Team) */}
+      <CareerJourney t={t} />
       {/* Enhanced Contact Section */}
       <section id="contact" className="py-20 relative">
         <div className="container mx-auto px-6 max-w-6xl">
