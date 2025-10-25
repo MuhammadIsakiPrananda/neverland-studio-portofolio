@@ -18,13 +18,13 @@
 
 **Neverland Studio** adalah portofolio digital interaktif yang menampilkan perpaduan antara desain modern, rekayasa AI, dan pengembangan web yang canggih. Dibangun dengan teknologi terkini, proyek ini bukan sekadar halaman statis, melainkan sebuah pengalaman imersif yang mendemonstrasikan kemampuan teknis dan visi kreatif kami.
 
-### [🔗 Lihat Live Demo](https://your-live-demo-link.com)
+### [🔗 Lihat Live Website](neverlandstudio.my.id)
 
 <br>
 
 <!-- Anda bisa mengganti URL gambar di bawah dengan screenshot atau GIF dari proyek Anda -->
 <div align="center">
-  <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Screenshot Proyek" width="800" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
+  <img src="https://github.com/MuhammadIsakiPrananda/neverland-studio-portofolio/blob/3638924f202ca391d2a6d657a93a76c9d7a1a829/Screenshot%202025-10-25%20154350.png" alt="Screenshot Proyek" width="800" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);" />
 </div>
 
 ## ✨ Fitur Utama
